@@ -19,13 +19,18 @@ import argparse
 
 #   return max_profit 
 
+# the for loop here moves down the array, i moves first, then j
+# on line 31, it's every item up to current index(i)
+# this means j will start over again at 0 every time
 def find_max_profit(prices):
   profits = [] #setting up an empty array to fill the profits
   # Find the difference of each number and each number before it.
-  for index in range(len(prices)): # for every item, if it's not 0
-    if index > 0:
-      for i in range(len(prices[:index])): # for every number prior to the index
-        profits.append(prices[index] - prices[i]) # append the price index-price to the profits array
+  for i in range(len(prices)):
+    # if i is greater than 0, meaning the position in the array since there is no number prior to 0
+    if i > 0:
+      # for every item in range of price up to the index(i) - i.e: the number to the left.
+      for j in range(len(prices[:i])): 
+        profits.append(prices[i] - prices[j]) # append the price index-price to the profits array
   return max(profits) # returns the max number
 
 if __name__ == '__main__':
