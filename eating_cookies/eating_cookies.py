@@ -53,7 +53,7 @@ def eating_cookies(n, cache=None):
   elif n == 3:
     # return 4 because there is only 4 ways to eat three cookies
     return 4
-
+  # else if there's a cache and there's a cache of nm
   elif cache and cache[n]:
     return cache[n]
     # this is in the case of FOUR COOKIES IN THE JAR
@@ -62,6 +62,7 @@ def eating_cookies(n, cache=None):
     # n-3 is 4-3, which is 1, and the CACHE value for n = 1, is 1
     # total ways to eat FOUR cookies would be SEVEN
   else:
+    # cache holds already calculated values so it doesn't have to manually recalculate every time
     cache[n] = eating_cookies(n-1, cache) + eating_cookies(n-2, cache) + eating_cookies(n-3, cache)
   
   return cache[n]
